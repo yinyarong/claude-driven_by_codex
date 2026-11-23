@@ -99,6 +99,12 @@ echo $PATH | tr ':' '\n' | grep .local
 bash /mnt/d/个人/claude-driven_by_codex/install/patch-upstream.sh ~/claude-driven-ai-providers
 ```
 
+## WSL 报 `Invalid argument`，目录里出现 `-?????????` 的文件
+
+某些 Windows 安全策略会禁止在特定磁盘（例如 D 盘）上创建或读取 `.py` 文件：WSL 新建 `.py` 会直接返回 `Invalid argument`，而 `.sh` 不受影响。
+
+本仓库因此不包含独立的 Python 文件，Codex 凭据导入逻辑已内联在 `install/install-wsl.sh` 中。如果你的环境也受此限制，避免把仓库放到该类磁盘，或改用 C 盘。
+
 ## 凭据与配额
 
 - 两条路线的配额都算在同一个 ChatGPT 账号上。

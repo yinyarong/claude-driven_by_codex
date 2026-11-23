@@ -7,3 +7,5 @@
 *.js text eol=lf
 *.template text eol=lf
 *.md text eol=lf
+# Extensionless shell wrappers must never receive CRLF.
+bin/wsl/* text eol=lf
