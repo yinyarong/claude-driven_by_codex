@@ -1,0 +1,7 @@
+#!/bin/bash
+# Installed to ~/.local/bin/clai-run by install/install-wsl.sh.
+
+source "$HOME/.clcd-env.sh"
+
+REPO="${CDR_UPSTREAM_DIR:-$HOME/claude-driven-ai-providers}"
+exec "$REPO/clai" "$@"

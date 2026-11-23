@@ -1,0 +1,30 @@
+# CLIProxyAPI 8.x configuration template.
+# install.ps1 substitutes the placeholders and writes the result outside this
+# repository, because the file contains a client key.
+
+config-version: 8
+
+server:
+  host: "127.0.0.1"
+  port: __CPA_PORT__
+
+# All OpenAI traffic goes through the local HTTP proxy.
+requests:
+  proxy-url: "http://127.0.0.1:__CLASH_PORT__"
+
+oauth:
+  auth-dir: "__AUTH_DIR__"
+
+# Local client key for Claude Code. Not an OpenAI key.
+access:
+  api-keys:
+    - "__CLIENT_KEY__"
+
+client:
+  claude:
+    # Show Codex commentary text during tool loops.
+    show-codex-commentary: true
+
+observability:
+  logs:
+    debug: false

@@ -1,0 +1,15 @@
+# Generated and secret-bearing files. Keep the repository clean.
+*.local
+*.env.cmd
+route.env.cmd
+config.yaml
+auth.json
+*.log
+logs/
+app-*/
+cli-proxy-api.exe
+*.zip
+*.tgz
+*.tar.gz
+.DS_Store
+Thumbs.db

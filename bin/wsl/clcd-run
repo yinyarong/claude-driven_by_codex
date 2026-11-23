@@ -1,0 +1,19 @@
+#!/bin/bash
+# Installed to ~/.local/bin/clcd-run by install/install-wsl.sh.
+# Sources the generated environment, then runs the patched upstream clcd.
+
+source "$HOME/.clcd-env.sh"
+
+REPO="${CDR_UPSTREAM_DIR:-$HOME/claude-driven-ai-providers}"
+export CLCD_CONTEXT_TOKENS="${CLCD_CONTEXT_TOKENS:-200000}"
+
+case "${1:-}" in
+  --check|--check-search|--help|-h)
+    exec "$REPO/clcd" "$@"
+    ;;
+  *)
+    # Ignore project-level .claude/settings.json so a directory-local
+    # ANTHROPIC_BASE_URL cannot hijack the bridge.
+    exec "$REPO/clcd" --setting-sources user "$@"
+    ;;
+esac
